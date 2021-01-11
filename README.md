@@ -59,6 +59,7 @@ Sample code to use the AppProvider to **query**:
     ContentValues values = new ContentValues();
     values.put(TasksContract.Columns.TASKS_NAME,"Content Provider");
     values.put(TasksContract.Columns.TASKS_DESCRIPTION, "Record content provider video");
+    //content://me.modernpage.tasktimer.AppProvider/Tasks/3
     int count = resolver.update(TasksContract.buildTaskUri(3),values, null, null);
     Log.d(TAG, "onCreate: " + count + " record(s) updated");
 ```
