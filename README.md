@@ -21,38 +21,47 @@ Don't forget to define the provider configurations on the Manifest.xml file.
 
 Sample code to use the AppProvider to **query**:
 ```java
-String[] projection = {TasksContract.Columns.TASKS_NAME, TasksContract.Columns.TASKS_DESCRIPTION};
-        ContentResolver contentResolver = getContentResolver();
-        Cursor cursor = contentResolver.query(TasksContract.CONTENT_URI,
-                projection,
-                null,
-                null,
-                TasksContract.Columns.TASKS_NAME);
-        if(cursor != null) {
-            Log.d(TAG, "onCreate: number of rows: " + cursor.getCount());
+    String[] projection = {TasksContract.Columns.TASKS_NAME, TasksContract.Columns.TASKS_DESCRIPTION};
+    ContentResolver contentResolver = getContentResolver();
+    Cursor cursor = contentResolver.query(TasksContract.CONTENT_URI,
+            projection,
+            null,
+            null,
+            TasksContract.Columns.TASKS_NAME);
+    if(cursor != null) {
+        Log.d(TAG, "onCreate: number of rows: " + cursor.getCount());
 
-            while (cursor.moveToNext()) {
-                for(int i=0; i<cursor.getColumnCount(); i++) {
-                    Log.d(TAG, "onCreate: " + cursor.getColumnName(i) + ": " + cursor.getString(i));
-                }
-                Log.d(TAG, "onCreate: ============================");
+        while (cursor.moveToNext()) {
+            for(int i=0; i<cursor.getColumnCount(); i++) {
+                Log.d(TAG, "onCreate: " + cursor.getColumnName(i) + ": " + cursor.getString(i));
             }
-            cursor.close();
+            Log.d(TAG, "onCreate: ============================");
         }
-        
+        cursor.close();
+    }
+
 ```
 **insert**
 ```java
-ContentValues values = new ContentValues();
-        values.put(TasksContract.Columns.TASKS_NAME, "New Task 1");
-        values.put(TasksContract.Columns.TASKS_DESCRIPTION, "New Description 1");
-        values.put(TasksContract.Columns.TASKS_SORTORDER, "1");
+    ContentValues values = new ContentValues();
+    values.put(TasksContract.Columns.TASKS_NAME, "New Task 1");
+    values.put(TasksContract.Columns.TASKS_DESCRIPTION, "New Description 1");
+    values.put(TasksContract.Columns.TASKS_SORTORDER, "1");
 
-        ContentResolver resolver = getContentResolver();
-        Uri uri = resolver.insert(TasksContract.CONTENT_URI, values);
-        Log.d(TAG, "onCreate: inserted data uri: " + uri);
+    ContentResolver resolver = getContentResolver();
+    Uri uri = resolver.insert(TasksContract.CONTENT_URI, values);
+    Log.d(TAG, "onCreate: inserted data uri: " + uri);
 ```
 *Content value is just like a bundle object, used to insert and update values of database
+
+**update**
+```java
+    ContentValues values = new ContentValues();
+    values.put(TasksContract.Columns.TASKS_NAME,"Content Provider");
+    values.put(TasksContract.Columns.TASKS_DESCRIPTION, "Record content provider video");
+    int count = resolver.update(TasksContract.buildTaskUri(3),values, null, null);
+    Log.d(TAG, "onCreate: " + count + " record(s) updated");
+```
         
 ![alt text](https://github.com/ModerPage/ConentProviderExample/blob/master/28a9bba9ffa148f78947d8940c1cfa09.png?raw=true)
 
