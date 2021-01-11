@@ -19,7 +19,7 @@ Don't forget to define the provider configurations on the Manifest.xml file.
   ...
 </application>
 
-Sample code to use the AppProvider to query:
+Sample code to use the AppProvider to **query**:
 ```java
 String[] projection = {TasksContract.Columns.TASKS_NAME, TasksContract.Columns.TASKS_DESCRIPTION};
         ContentResolver contentResolver = getContentResolver();
@@ -41,6 +41,18 @@ String[] projection = {TasksContract.Columns.TASKS_NAME, TasksContract.Columns.T
         }
         
 ```
+**insert**
+```java
+ContentValues values = new ContentValues();
+        values.put(TasksContract.Columns.TASKS_NAME, "New Task 1");
+        values.put(TasksContract.Columns.TASKS_DESCRIPTION, "New Description 1");
+        values.put(TasksContract.Columns.TASKS_SORTORDER, "1");
+
+        ContentResolver resolver = getContentResolver();
+        Uri uri = resolver.insert(TasksContract.CONTENT_URI, values);
+        Log.d(TAG, "onCreate: inserted data uri: " + uri);
+```
+*Content value is just like a bundle object, used to insert and update values of database
         
 ![alt text](https://github.com/ModerPage/ConentProviderExample/blob/master/28a9bba9ffa148f78947d8940c1cfa09.png?raw=true)
 
