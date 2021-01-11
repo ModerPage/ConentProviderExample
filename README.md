@@ -19,7 +19,7 @@ Don't forget to define the provider configurations on the Manifest.xml file.
   ...
 </application>
 
-Sample code to use the AppProvider:
+Sample code to use the AppProvider to query:
 ```java
 String[] projection = {TasksContract.Columns.TASKS_NAME, TasksContract.Columns.TASKS_DESCRIPTION};
         ContentResolver contentResolver = getContentResolver();
