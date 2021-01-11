@@ -57,3 +57,5 @@ ContentValues values = new ContentValues();
 ![alt text](https://github.com/ModerPage/ConentProviderExample/blob/master/28a9bba9ffa148f78947d8940c1cfa09.png?raw=true)
 
 ![alt text](https://github.com/ModerPage/ConentProviderExample/blob/master/0f90cba3f3f04d8d9bec2cbe14703968.png?raw=true)
+
+![alt text](https://github.com/ModerPage/ConentProviderExample/blob/master/a546e67a3b9e4bf9a25413789245c738.png?raw=true)
